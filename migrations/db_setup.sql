@@ -1,0 +1,7 @@
+CREATE DATABASE IF NOT EXISTS blogapp_db;
+
+CREATE TABLE IF NOT EXISTS blogapp_db.blogs(
+    id INT AUTO_INCREMENT PRIMARY KEY NOT NULL,
+    blog_title VARCHAR(75) NOT NULL,
+    blog_content TEXT NOT NULL
+);
