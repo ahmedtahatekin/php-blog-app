@@ -18,15 +18,17 @@ $stmt = $conn->prepare(
     "INSERT INTO blogs(blog_title, blog_content) VALUES (:blog_title, :blog_content)"
 );
 
-if (($blog_title === null || $blog_title === "") && !($blog_content === null || $blog_content === "")) {
-    $blog_title = "Başlıksız";
+if (empty($blog_content)) {
+    $msg = "Ekleme Başarısız: içerik boş olamaz!";
+} else {
+    if (empty($blog_title)) {
+        $blog_title = "Başlıksız";
+    }
 
     $stmt->execute([
         ":blog_title" => setInput($blog_title),
         ":blog_content" => setInput($blog_content),
     ]);
-} elseif ($blog_content === null || $blog_content === "") {
-    $msg = "Ekleme Başarısız: içerik boş olamaz!";
 }
 ?>
 
